@@ -13,3 +13,20 @@ searchInputEl.addEventListener('blur', function () {
   searchInputEl.setAttribute('placeholder', '');
 })
 
+const badgeEl = document.querySelector('header .badges');
+
+window.addEventListener('scroll', _.throttle(function () {
+  if (window.scrollY > 500) {
+    //badgeを隠す
+    gsap.to(badgeEl, .6, {
+      opacity: 0,
+      display: 'none'
+    })
+  } else {
+    //badgeを表示する
+    gsap.to(badgeEl, .6, {
+      opacity: 1,
+      display: 'block'
+    });
+  }
+}, 300))
